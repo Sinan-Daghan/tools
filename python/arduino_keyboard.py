@@ -1,6 +1,13 @@
-import serial
+import serial, sys
 
-with serial.Serial('/dev/ttyACM0', 9600) as ser:
+port = '/dev/ttyACM0'
+
+if len(sys.argv) >= 2:
+    port = sys.argv[1]
+
+print(f"You are connected to the port: {port}")
+
+with serial.Serial(port, 9600) as ser:
     try:
         while True:
             line = ser.readline().decode("utf-8", errors='replace').strip()
