@@ -19,12 +19,18 @@ if response.status_code == 200:
         print("No img elements found")
     elif len(img_elements) == 1:
         print("1 img element found")
-    else:
+    elif len(img_elements) < 11:
         print(f"{len(img_elements)} img elements found")
+    else:
+        print(f"{len(img_elements)} img elements found do you want to continue? (y/n)")
+        response = input()
+        if response.lower() != "y":
+            print("Exiting...")
+            sys.exit(1)
 
     for img in img_elements:
         src = img.get('src')
-        print(f"Image source: {src}")
+        print(f"Image Source: {src}")
         webbrowser.open(src)
 
 else:
