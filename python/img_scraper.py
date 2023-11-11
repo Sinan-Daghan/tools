@@ -31,6 +31,15 @@ if response.status_code == 200:
     for img in img_elements:
         src = img.get('src')
         print(f"Image Source: {src}")
+    
+    print("Do you want to open all the img elements in the browser (y/n)")
+    response = input()
+    if response.lower() != "y":
+        print("Exiting...")
+        sys.exit(1)
+
+    for img in img_elements:
+        src = img.get('src')
         webbrowser.open(src)
 
 else:
